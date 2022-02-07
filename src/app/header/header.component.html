@@ -1,0 +1,26 @@
+<div class="container-main">
+    <div class="navbar-container">
+        <div class="brand-con">
+            <h2>Coding <span style="color: #4aa6ea;">Addict</span></h2>
+        </div>
+        <div class="menu-bar">
+           <button id="menu-bar-btn" (click)="menuToggle()">
+            <span class="material-icons" style="color: #4aa6ea;">menu</span>
+           </button>
+        </div>
+        <!-- desktop menu -->
+        <div class="menu-con">
+            <ul class="menu">
+               <!-- menu will be added dynamically -->
+               <li *ngFor="let menu of menus">{{menu}}</li>
+            </ul>
+        </div>
+    </div>
+     <!-- mobile menu -->
+     <div class="mobile-menu-con" [ngClass]="toggle ? 'd-none':''">
+        <ul class="mobile-menu">
+            <!-- menu will be added dynamically -->
+            <li *ngFor="let menu of menus">{{menu}}</li>
+        </ul>
+    </div>
+</div>

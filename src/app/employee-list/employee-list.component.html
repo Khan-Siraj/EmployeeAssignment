@@ -1,0 +1,62 @@
+<div class="p-5">
+    <h2 class="mb-4">Employees</h2>
+    <div>
+        <table class="table table-bordered table-responsive-md shadow">
+            <thead class="table-dark">
+                <tr>
+                    <td>Employee ID</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Salary</td>
+                    <td>DOB</td>
+                    <td>Email</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employeeList;index as i">
+                    <ng-template [ngIf]="currentIndex != i">
+                        <td>{{emp.EmployeeID}}</td>
+                        <td>{{emp.FirstName}}</td>
+                        <td>{{emp.LastName}}</td>
+                        <td>{{emp.Salary}}</td>
+                        <td>{{emp.DOB}}</td>
+                        <td>{{emp.Email}}</td>
+                    </ng-template>
+                    <ng-template [ngIf]="showEdit && currentIndex == i">
+                        <td>
+                            <input class="form-control" type="number" [(ngModel)]="emp.EmployeeID">
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" [(ngModel)]="emp.FirstName">
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" [(ngModel)]="emp.LastName">
+                        </td>
+                        <td>
+                            <input class="form-control" type="number" [(ngModel)]="emp.Salary">
+                        </td>
+                        <td>
+                            <input class="form-control" type="datetime" [(ngModel)]="emp.DOB">
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" [(ngModel)]="emp.Email">
+                        </td>
+                    </ng-template>
+                    <td>
+                        <ng-template [ngIf]="currentIndex != i">
+                            <div>
+                                <button class="btn btn-primary px-3" (click)="EditEmp();currentIndex=i">Edit</button>
+                            </div>
+                        </ng-template>
+                        <ng-template [ngIf]="showEdit && currentIndex==i">
+                            <div>
+                                <button class="btn btn-primary px-3" (click)="UpdateEmp();currentIndex=null">Update</button>
+                            </div>
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
