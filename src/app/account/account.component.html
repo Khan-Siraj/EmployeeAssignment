@@ -1,0 +1,98 @@
+<div class=" container d-flex justify-content-center align-items-center p-4">
+    <div class=" card w-50 p-4">
+        <h2 class=" display-5 text-center mb-2">Signup Form</h2>
+        <form fxLayout="column" [formGroup]="signupForm">
+            <div class="form-group pb-1" >
+              <label>Seller Name</label>
+              <input class="form-control" type="text" required formControlName="sellerName">
+              <span *ngIf="checkError('sellerName').hasError('required')">
+                      Name is required !
+              </span>
+              <span *ngIf="checkError('sellerName').hasError('pattern') && !checkError('sellerName').hasError('required')">
+                      Only Characters !
+              </span>
+            </div>
+            <div class="form-group pb-1" >
+              <label>Shop Name</label>
+              <input class="form-control"  required formControlName="shopName">
+              <span *ngIf="checkError('shopName').hasError('required')">
+                      Shop name is required !
+              </span>
+            </div>
+            <div class="form-group">
+              <label>Select Product Type</label>
+              <select class="form-control" required formControlName="productType">
+                <option>None</option>
+                <option value="garment">Garment</option>
+                <option value="footwear">Footwear</option>
+                <option value="accessories">Accessories</option>
+              </select>
+              <span *ngIf="checkError('productType').hasError('required')">
+                Please Select Product Type !
+              </span>
+            </div>
+            <div class="form-group pb-1" >
+              <label>Shop Address</label>
+              <input class="form-control" required formControlName="shopAddress">
+              <span *ngIf="checkError('shopAddress').hasError('required')">
+                      Address is required !
+              </span>
+            </div>
+            <div class="form-group pb-1" >
+              <label>Seller Email</label>
+              <input class="form-control" type="email" formControlName="sellerEmail">
+              <span *ngIf="checkError('sellerEmail').hasError('email')">
+                Please type valid email !
+              </span>
+            </div>
+            <div class="form-group pb-1" >
+              <label>Seller Mobile</label>
+              <input class="form-control" maxlength="10" required formControlName="sellerMobile">
+              <span *ngIf="checkError('sellerMobile').hasError('required')">
+                Mobile Number is required !
+              </span>
+              <span *ngIf="checkError('sellerMobile').hasError('minlength') 
+                                  && !checkError('sellerMobile').hasError('required')
+                                  && !checkError('sellerMobile').hasError('pattern')">
+                Mobile number have min 10 digit !
+              </span>
+              <span *ngIf="checkError('sellerMobile').hasError('maxlength') 
+                                  && !checkError('sellerMobile').hasError('minlength')
+                                  && !checkError('sellerMobile').hasError('required')
+                                  && !checkError('sellerMobile').hasError('pattern')">
+                Mobile number have max 12 digit !
+              </span>
+              <span *ngIf="checkError('sellerMobile').hasError('pattern') && !checkError('sellerMobile').hasError('required')">
+                Please type valid mobile number !
+              </span>
+            </div>
+            <div class="form-group pb-2" >
+                <label>Password</label>
+              <div class="input-group mb-3">
+                <input type="text" formControlName="password" type="{{visibility? 'password':'text'}}" class="form-control" placeholder="Password">
+                <div class="input-group-append">
+                  <span class="input-group-text" [ngClass]="visibility?'fa fa-eye':'fa fa-eye-slash'" (click)="visibilityToggle()"></span>
+                </div>
+              </div>
+              <span *ngIf="checkError('password').hasError('required')">
+                Password is required !
+              </span>
+              <span *ngIf="checkError('password').hasError('minlength') 
+                        && !checkError('password').hasError('required')
+                        && !checkError('password').hasError('pattern')">
+                Password min length should be 8 characters !
+              </span>
+              <span *ngIf="checkError('password').hasError('maxlength') 
+                        && !checkError('password').hasError('minlength')
+                        && !checkError('password').hasError('required')
+                        && !checkError('password').hasError('pattern')">
+                Password max length should be 12 characters !
+              </span>
+            </div>
+            <div align="center" class="my-4">
+              <button color="primary" style="border-radius: 100px;" class=" btn btn-info py-1 px-3 font-1"
+              [disabled]="!signupForm.valid">Signup</button>
+            </div>
+          </form>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+*:focus{
+    box-shadow: none;
+}
+
+span {
+    color: red;
+}

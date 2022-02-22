@@ -7,7 +7,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  menus:string[] = ['Home','About', 'Projects', 'Contact',"Account"];
+  menus:any[] = [
+    {
+      label:'Home',
+      url:'/home'
+    },
+    {
+      label:'About',
+      url:'/about'
+    }, 
+    {
+      label:'Projects',
+      url:'/projects'
+    },
+    {
+      label:'Employees',
+      url:'/employees'
+    }, 
+    {
+      label:'Contact',
+      url:'/contact'
+    },
+    {
+      label:'Account',
+      url:'/account'
+    }
+  ];
   toggle:boolean=false;
   constructor() { }
 

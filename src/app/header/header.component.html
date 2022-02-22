@@ -12,7 +12,7 @@
         <div class="menu-con">
             <ul class="menu">
                <!-- menu will be added dynamically -->
-               <li *ngFor="let menu of menus">{{menu}}</li>
+               <li *ngFor="let menu of menus" [routerLink]="menu.url">{{menu.label}}</li>
             </ul>
         </div>
     </div>
